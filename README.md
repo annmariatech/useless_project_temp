@@ -2,17 +2,16 @@
 
 
 
-# [Project Name] 🎯
+# GooberMaps 🎯
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: Vortex
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Team Lead: [Ann Maria] - [SOE, CUSAT]
+- Member 2: [Devika Rejith] - [SOE, CUSAT]
 
 ### Project Description
 [2-3 lines about what your project does]
