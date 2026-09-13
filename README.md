@@ -1,103 +1,86 @@
-<img width="1280" height="640" alt="git (1)" src="https://github.com/user-attachments/assets/8920b256-2ba8-4988-b824-5351134eb4bd" />
+# 🗺️ GooberMaps
 
-
-
-# [Project Name] 🎯
-
-
-## Basic Details
-### Team Name: [Name]
-
-
-### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
-
-### Project Description
-[2-3 lines about what your project does]
-
-### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
-
-### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
-
-## Technical Details
-### Technologies/Components Used
-For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
-
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
-
-### Implementation
-For Software:
-# Installation
-[commands]
-
-# Run
-[commands]
-
-### Project Documentation
-For Software:
-
-# Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
-
-# Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
-
-For Hardware:
-
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
-
-### Project Demo
-# Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
-
-# Additional Demos
-[Add any extra demo materials/links]
-
-## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+> **The Map-Based Travel Comparison Tool for the Useless Hackathon!**  
+> Pitting real transportation modes against absurd alternatives like Spider-Man swinging, unicycles, pogo sticks, roller skates, ziplines, and squeaky shopping carts.
 
 ---
-Made with ❤️ at TinkerHub Useless Projects 
 
-![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
-![Static Badge](https://img.shields.io/badge/UselessProjects--26-26?link=https%3A%2F%2Ftinkerhub.org%2Fevents%2F1M8ORET9A1%2Fuseless-projects-3.0)
+## ⚡ Tech Stack (100% Free & Open Source)
 
+- **Framework**: Vite + React + TypeScript
+- **Mapping**: Leaflet + `react-leaflet`
+- **Map Tiles**: OpenStreetMap
+- **Geocoding**: Nominatim API
+- **Routing**: OSRM Demo Server (Driving API) + Haversine Straight-Line Formula
+- **Styling**: Tailwind CSS
+- **State Management**: Zustand
+- **Icons & Extras**: Lucide React + Canvas Confetti
 
+---
 
+## 🚀 Quickstart Guide
+
+### 1. Install Dependencies
+```bash
+npm install
+```
+
+### 2. Run Local Development Server
+```bash
+npm run dev
+```
+
+### 3. Build for Production
+```bash
+npm run build
+```
+
+---
+
+## 🐢 Nominatim Usage Policy & Rate Limits
+
+GooberMaps strictly adheres to [OpenStreetMap Nominatim's Usage Policy](https://operations.osmfoundation.org/policies/nominatim/):
+- **User-Agent Header**: All geocoding HTTP requests include a custom identifier header:
+  `User-Agent: GooberMaps/1.0 (Hackathon-Demo-App)`
+- **Request Throttling**: Geocoding requests are debounced by 600ms and throttled to **at most 1 request per second** (`enforceNominatimThrottle` in `src/lib/geocode.ts`).
+
+---
+
+## 🧮 Absurdity Index Formula
+
+GooberMaps uses a mathematical formula to crown the most ridiculous travel option:
+
+$$\text{Absurdity Score} = \frac{\text{Time (hours)} \times \text{Cost (USD)}}{\text{Practicality Rating}}$$
+
+- **Time (hours)**: Travel duration calculated from mode speed.
+- **Cost (USD)**: Fare calculated based on mode per-kilometer rate.
+- **Practicality Rating**: Score from $1.0$ (Zipline) to $10.0$ (Driving).
+
+---
+
+## 🎭 Included Modes
+
+### Real Modes
+- 🚶 **Walking**: 5 km/h | $0.40/km
+- 🚲 **Cycling**: 18 km/h | $0.15/km
+- 🚗 **Driving**: 55 km/h | $0.85/km
+
+### Absurd Modes
+- 🕷️ **Spider-Man Swing**: 75 km/h | $14.50/km *(Requires skyscrapers & web fluid)*
+- 🎪 **Unicycle**: 11 km/h | $0.60/km *(Half the wheels, double the embarrassment)*
+- 🦘 **Pogo Stick**: 7.5 km/h | $2.20/km *(Spinal alignment recommended)*
+- 🛼 **Roller Skates**: 16 km/h | $0.45/km *(Great until you encounter hills)*
+- 🪢 **Zipline**: 95 km/h | $28.00/km *(Straight-line only! Ignores city bylaws)*
+- 🛒 **Shopping Cart**: 20 km/h | $0.25/km *(Squeaky front wheel included)*
+
+---
+
+## 💰 Silly Currencies Included
+
+Convert your trip cost from USD into:
+- 🍎 Granny Smith Apples
+- 🍊 Juicy Oranges
+- 🦆 Squeaky Rubber Ducks
+- 🫘 Black-Market Kidneys
+- 🍞 Artisanal Sourdough Loaves
+- ⏳ Minimum-Wage Work Hours
