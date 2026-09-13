@@ -5,6 +5,13 @@ import { TRANSPORT_MODES } from '../lib/modes';
 import type { CalculatedModeResult } from '../lib/routing';
 import { calculateModeMetrics, fetchOSRMRoute } from '../lib/routing';
 
+interface SavedRouteEntry {
+  id: string;
+  from: LocationResult;
+  to: LocationResult;
+  createdAt: number;
+}
+
 interface RouteState {
   fromLocation: LocationResult | null;
   toLocation: LocationResult | null;
@@ -16,6 +23,9 @@ interface RouteState {
   hasSearched: boolean; // false = landing page with full map; true = directions sidebar view
   isLocatingUser: boolean;
   userLocation: { lat: number; lng: number } | null;
+  activeNav: 'saved' | 'recents' | null;
+  savedRoutes: SavedRouteEntry[];
+  recentRoutes: SavedRouteEntry[];
   
   // Actions
   setFromLocation: (loc: LocationResult | null) => void;
@@ -23,11 +33,29 @@ interface RouteState {
   setSelectedCurrency: (currId: string) => void;
   setSelectedMode: (modeId: string) => void;
   setHasSearched: (searched: boolean) => void;
+  setActiveNav: (nav: 'saved' | 'recents' | null) => void;
   swapLocations: () => void;
   loadPresetRoute: (presetIndex: number) => void;
+  saveCurrentRoute: () => void;
+  addRecentSearch: () => void;
+  loadSavedRoute: (id: string) => void;
+  loadRecentRoute: (id: string) => void;
   requestUserLocation: () => Promise<void>;
   calculateRoutes: () => Promise<void>;
 }
+
+const readStoredRoutes = <T,>(key: string, fallback: T): T => {
+  if (typeof window === 'undefined') {
+    return fallback;
+  }
+
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? (JSON.parse(raw) as T) : fallback;
+  } catch {
+    return fallback;
+  }
+};
 
 export const useRouteStore = create<RouteState>((set, get) => ({
   fromLocation: PRESET_ROUTES[0].from,
@@ -40,6 +68,9 @@ export const useRouteStore = create<RouteState>((set, get) => ({
   hasSearched: false,
   isLocatingUser: false,
   userLocation: null,
+  activeNav: null,
+  savedRoutes: readStoredRoutes<SavedRouteEntry[]>('goober-saved-routes', []),
+  recentRoutes: readStoredRoutes<SavedRouteEntry[]>('goober-recent-routes', []),
 
   setFromLocation: (loc) => {
     set({ fromLocation: loc });
@@ -52,6 +83,7 @@ export const useRouteStore = create<RouteState>((set, get) => ({
     set({ toLocation: loc });
     if (loc) {
       set({ hasSearched: true });
+      get().addRecentSearch();
       get().calculateRoutes();
     }
   },
@@ -61,6 +93,8 @@ export const useRouteStore = create<RouteState>((set, get) => ({
   setSelectedMode: (modeId) => set({ selectedModeId: modeId }),
 
   setHasSearched: (searched) => set({ hasSearched: searched }),
+
+  setActiveNav: (nav) => set({ activeNav: nav }),
 
   swapLocations: () => {
     const { fromLocation, toLocation } = get();
@@ -73,6 +107,74 @@ export const useRouteStore = create<RouteState>((set, get) => ({
   loadPresetRoute: (presetIndex) => {
     const preset = PRESET_ROUTES[presetIndex] || PRESET_ROUTES[0];
     set({ fromLocation: preset.from, toLocation: preset.to, hasSearched: true });
+    get().addRecentSearch();
+    get().calculateRoutes();
+  },
+
+  saveCurrentRoute: () => {
+    const { fromLocation, toLocation } = get();
+    if (!fromLocation || !toLocation) {
+      return;
+    }
+
+    const entry: SavedRouteEntry = {
+      id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+      from: fromLocation,
+      to: toLocation,
+      createdAt: Date.now(),
+    };
+
+    const nextSavedRoutes = [entry, ...get().savedRoutes].slice(0, 8);
+    set({ savedRoutes: nextSavedRoutes });
+
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('goober-saved-routes', JSON.stringify(nextSavedRoutes));
+    }
+  },
+
+  addRecentSearch: () => {
+    const { fromLocation, toLocation } = get();
+    if (!fromLocation || !toLocation) {
+      return;
+    }
+
+    const entry: SavedRouteEntry = {
+      id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+      from: fromLocation,
+      to: toLocation,
+      createdAt: Date.now(),
+    };
+
+    const deduped = get().recentRoutes.filter(
+      (route) =>
+        !(route.from.placeId === fromLocation.placeId && route.to.placeId === toLocation.placeId)
+    );
+
+    const nextRecentRoutes = [entry, ...deduped].slice(0, 8);
+    set({ recentRoutes: nextRecentRoutes });
+
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('goober-recent-routes', JSON.stringify(nextRecentRoutes));
+    }
+  },
+
+  loadSavedRoute: (id) => {
+    const target = get().savedRoutes.find((route) => route.id === id);
+    if (!target) {
+      return;
+    }
+
+    set({ fromLocation: target.from, toLocation: target.to, hasSearched: true });
+    get().calculateRoutes();
+  },
+
+  loadRecentRoute: (id) => {
+    const target = get().recentRoutes.find((route) => route.id === id);
+    if (!target) {
+      return;
+    }
+
+    set({ fromLocation: target.from, toLocation: target.to, hasSearched: true });
     get().calculateRoutes();
   },
 

@@ -29,6 +29,7 @@ export const DirectionsSidebar: React.FC = () => {
     isCalculating,
     requestUserLocation,
     isLocatingUser,
+    saveCurrentRoute,
   } = useRouteStore();
 
   const [fromQuery, setFromQuery] = useState(fromLocation?.shortName || 'Your location');
@@ -244,7 +245,13 @@ export const DirectionsSidebar: React.FC = () => {
             <button className="flex items-center gap-1 hover:underline font-medium">
               <Plus className="w-3.5 h-3.5" /> Add destination
             </button>
-            <span className="text-[10px]" style={{ color: '#67b5c5' }}>OSRM + Haversine</span>
+            <button
+              onClick={saveCurrentRoute}
+              className="px-2 py-1 rounded-lg text-[10px] font-semibold transition"
+              style={{ backgroundColor: '#0f4a5a', border: '1px solid #1a6070', color: '#facc15' }}
+            >
+              Save route
+            </button>
           </div>
         </div>
 
