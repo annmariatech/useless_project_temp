@@ -14,10 +14,10 @@
 - Member 2: [Devika Rejith] - [SOE, CUSAT]
 
 ### Project Description
-[2-3 lines about what your project does]
+- GooberMaps is a fun map app that compares normal travel with ridiculous options like Spider-Man swinging, pogo-sticking, and unicycling. It calculates the time and absurdity of each route. It also helps us in covering the expenditure of each travel in more and more unhinged ways.
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+- The nonexis
 
 ### The Solution (that nobody asked for)
 [How are you solving it? Keep it fun!]
