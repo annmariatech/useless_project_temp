@@ -39,7 +39,7 @@ export function generateRoast(
   if (worst.mode.id === 'zipline') {
     return {
       headline: `Ziplining ${distanceFormatted} is officially certified insanity!`,
-      subtext: `Installing ${distanceFormatted} of high-tension industrial cable will cost ${worst.costUSD.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}, or roughly ${worst.absurdityIndex.toLocaleString()} absurd points. City council is sending police.`,
+      subtext: `Installing ${distanceFormatted} of high-tension industrial cable will cost ₹${worst.costINR.toLocaleString('en-IN')}, or roughly ${worst.absurdityIndex.toLocaleString()} absurd points. City council is sending police.`,
       badgeText: "Absurdity Winner 🏆",
       emoji: "🪢",
     };
@@ -47,7 +47,7 @@ export function generateRoast(
 
   if (worst.mode.id === 'spiderman') {
     return {
-      headline: `Spider-Man mode requires ${worst.costUSD.toLocaleString('en-US', { style: 'currency', currency: 'USD' })} in webbing refills!`,
+      headline: `Spider-Man mode requires ₹${worst.costINR.toLocaleString('en-IN')} in webbing refills!`,
       subtext: `Unless you're traveling strictly between skyscrapers, you'll slam into a strip mall after 200 meters.`,
       badgeText: "High Chaos Alert 🕷️",
       emoji: "🕷️",

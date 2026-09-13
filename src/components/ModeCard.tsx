@@ -1,5 +1,5 @@
 import type { CalculatedModeResult } from '../lib/routing';
-import { convertFromUSD } from '../lib/currencies';
+import { convertFromINR } from '../lib/currencies';
 import { useRouteStore } from '../hooks/useRoute';
 import { Clock, DollarSign, Zap, Skull, Trophy, Sparkles, CheckCircle2 } from 'lucide-react';
 
@@ -8,12 +8,12 @@ interface ModeCardProps {
 }
 
 export const ModeCard: React.FC<ModeCardProps> = ({ result }) => {
-  const { mode, durationFormatted, costUSD, absurdityIndex, isWinner, isWorst } = result;
+  const { mode, durationFormatted, costINR, absurdityIndex, isWinner, isWorst } = result;
 
   const { selectedCurrencyId, selectedModeId, setSelectedMode } = useRouteStore();
 
   const isSelected = selectedModeId === mode.id;
-  const convertedCurrency = convertFromUSD(costUSD, selectedCurrencyId);
+  const convertedCurrency = convertFromINR(costINR, selectedCurrencyId);
 
   return (
     <div
@@ -95,8 +95,8 @@ export const ModeCard: React.FC<ModeCardProps> = ({ result }) => {
         <div className="flex items-center space-x-2">
           <DollarSign className="w-3.5 h-3.5 text-emerald-400" />
           <div>
-            <span className="text-[10px] text-slate-400 block">USD Cost</span>
-            <span className="font-semibold text-slate-200">${costUSD.toFixed(2)}</span>
+            <span className="text-[10px] text-slate-400 block">INR Cost</span>
+            <span className="font-semibold text-slate-200">₹{costINR.toFixed(2)}</span>
           </div>
         </div>
 

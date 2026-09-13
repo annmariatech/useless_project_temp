@@ -34,7 +34,7 @@ export const ComparisonGrid: React.FC = () => {
   // Sort modes
   const sorted = [...filtered].sort((a, b) => {
     if (sortBy === 'time') return a.durationHours - b.durationHours;
-    if (sortBy === 'cost') return a.costUSD - b.costUSD;
+    if (sortBy === 'cost') return a.costINR - b.costINR;
     if (sortBy === 'absurdity') return b.absurdityIndex - a.absurdityIndex;
     return 0;
   });

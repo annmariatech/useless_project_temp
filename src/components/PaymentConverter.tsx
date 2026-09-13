@@ -39,14 +39,14 @@ export const PaymentConverter: React.FC = () => {
         </div>
       </div>
 
-      {activeCurrency.id !== 'usd' && (
+      {activeCurrency.id !== 'inr' && (
         <div className="mt-3 text-[11px] text-amber-300/90 bg-amber-950/30 border border-amber-800/40 rounded-xl px-3 py-2 flex items-center justify-between">
           <span className="flex items-center gap-1.5">
             <span className="text-base">{activeCurrency.emoji}</span>
             <span>{activeCurrency.description}</span>
           </span>
           <span className="font-mono text-amber-200 text-[10px] bg-amber-900/50 px-2 py-0.5 rounded border border-amber-700/50 whitespace-nowrap">
-            1 USD = {activeCurrency.usdRate} {activeCurrency.unitName}
+            1 INR = {activeCurrency.inrRate} {activeCurrency.unitName}
           </span>
         </div>
       )}

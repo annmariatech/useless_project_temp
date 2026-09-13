@@ -6,7 +6,6 @@ import { Search, MapPin, Navigation, Loader2 } from 'lucide-react';
 
 export const GoogleMapsHeader: React.FC = () => {
   const {
-    fromLocation,
     setToLocation,
     loadPresetRoute,
     requestUserLocation,
