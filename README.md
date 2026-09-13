@@ -1,3 +1,4 @@
+
 <img width="1280" height="640" alt="git (1)" src="https://github.com/user-attachments/assets/8920b256-2ba8-4988-b824-5351134eb4bd" />
 
 
@@ -85,10 +86,45 @@ vercel --prod
 **For Software:**
 
 # Screenshots (Add at least 3)
+<img width="1414" height="799" alt="Screenshot 2026-09-13 at 6 13 14 PM" src="https://github.com/user-attachments/assets/e437163f-8639-4b87-a9ca-a8ad1482204c" />
+Landing page of GooberMaps showing the map at your location
 
+
+<img width="1398" height="770" alt="Screenshot 2026-09-13 at 6 15 33 PM" src="https://github.com/user-attachments/assets/6f1b3a31-8d2b-4b83-b812-c8dfd06de31b" />
+Lets jump from here to cusat road by pogo sticks :p
+
+<img width="1412" height="759" alt="Screenshot 2026-09-13 at 6 16 15 PM" src="https://github.com/user-attachments/assets/1b338011-4ed1-449a-8eba-4411cca85e95" />
+Or maybe we'll walk to the Bahamas 
 
 
 # Diagrams
+```mermaid
+flowchart LR
+    A([User opens app]) --> B[Enter 'From' location]
+    B --> C[Enter 'To' location]
+    C --> D{Both valid?}
+    D -- No --> E[Show inline error<br/>'That's not a real place, bestie']
+    E --> B
+    D -- Yes --> F[Geocode via Nominatim]
+    F --> G[Fetch route via OSRM]
+    G --> H{Route found?}
+    H -- No --> I[Fallback: straight-line<br/>haversine × 1.3]
+    H -- Yes --> J[Draw polyline on map]
+    I --> J
+    J --> K[Calculate NORMAL modes<br/>walk · cycle · drive]
+    J --> L[Calculate ABSURD modes<br/>+ chaos multiplier ±30%]
+    K --> M[Convert costs to<br/>selected silly currency]
+    L --> M
+    M --> N[Sort by time<br/>highlight winner + worst]
+    N --> O[Generate roast verdict]
+    O --> P[Render ComparisonGrid<br/>+ VerdictBanner + ModeCards]
+    P --> Q{User action}
+    Q -- Change currency --> M
+    Q -- Toggle Chaos Mode --> L
+    Q -- New route --> B
+    Q -- Save to Hall of Shame --> R[(localStorage)]
+    Q -- Share as PNG --> S[Canvas → download]
+```
 
 
 ## 🧠 How the Absurdity Works
@@ -136,9 +172,8 @@ MIT — do whatever, just don't actually zipline to work.
 - You, for reading this far
 
 ## Team Contributions
-- Ann Maria: [Specific contributions]
-- Devika Rejith: [Specific contributions]
-
+- Ann Maria: Project ideation, typescript coding
+- Devika Rejith: Handled UI/UX and project documentation 
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
