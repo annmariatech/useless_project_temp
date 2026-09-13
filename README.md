@@ -80,7 +80,10 @@ vercel --prod
 ```
 
 ---
+### DEPLOYED LINK
+https://useless-project-temp-dusky-six.vercel.app
 
+---
 ### Project Documentation
 
 **For Software:**
