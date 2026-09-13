@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouteStore } from '../hooks/useRoute';
-import { Menu, Compass, Bookmark, Clock } from 'lucide-react';
+import { Menu, Bookmark, Clock } from 'lucide-react';
 
 export const SlimNavRail: React.FC = () => {
   const {
@@ -32,14 +32,14 @@ export const SlimNavRail: React.FC = () => {
           <Menu className="w-5 h-5" />
         </button>
 
-        {/* Goober Maps Home Icon */}
+        {/* GooberMaps Home Logo */}
         <button
           onClick={() => setHasSearched(false)}
           title="GooberMaps Home"
-          className="w-10 h-10 rounded-full border-2 flex items-center justify-center hover:scale-110 transition"
-          style={{ backgroundColor: '#0f4a5a', borderColor: '#22d3ee', color: '#22d3ee' }}
+          className="w-10 h-10 rounded-xl border-2 flex items-center justify-center hover:scale-110 transition overflow-hidden"
+          style={{ backgroundColor: '#ffffff', borderColor: '#22d3ee' }}
         >
-          <Compass className="w-5 h-5" />
+          <img src="/goobermaps-logo.png" alt="GooberMaps home" className="w-full h-full object-cover" />
         </button>
 
         <hr style={{ borderColor: '#164e5e' }} className="w-8" />

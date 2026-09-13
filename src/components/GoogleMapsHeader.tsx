@@ -44,12 +44,16 @@ export const GoogleMapsHeader: React.FC = () => {
         className="relative glass-panel rounded-2xl shadow-2xl p-2.5 flex items-center gap-3"
         style={{ backgroundColor: 'rgba(11, 46, 56, 0.92)', border: '2px solid rgba(34, 211, 238, 0.3)' }}
       >
-        {/* Brand Icon */}
-        <div
-          className="w-10 h-10 rounded-xl flex items-center justify-center text-xl shadow-md shrink-0"
-          style={{ background: 'linear-gradient(135deg, #facc15, #f97316)' }}
-        >
-          🗺️
+        {/* GooberMaps Logo */}
+        <div className="flex items-center gap-2 shrink-0">
+          <img
+            src="/goobermaps-logo.png"
+            alt="GooberMaps logo"
+            className="w-11 h-11 rounded-xl object-cover shadow-md"
+          />
+          <span className="hidden sm:inline text-sm font-black tracking-tight" style={{ color: '#facc15' }}>
+            GooberMaps
+          </span>
         </div>
 
         {/* Search Input */}
