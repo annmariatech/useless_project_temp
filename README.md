@@ -5,6 +5,8 @@
 
 # GooberMaps 🎯
 
+# DEPLOYED LINK
+https://useless-project-temp-dusky-six.vercel.app
 
 ## Basic Details
 ### Team Name: Vortex
@@ -80,10 +82,7 @@ vercel --prod
 ```
 
 ---
-### DEPLOYED LINK
-https://useless-project-temp-dusky-six.vercel.app
 
----
 ### Project Documentation
 
 **For Software:**
